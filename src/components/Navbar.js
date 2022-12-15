@@ -23,7 +23,7 @@ export const Navbar = () => {
             {/* <MenuIco /> */}
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            TaskApp
+            Taskfy
           </Typography>
           <Button color="inherit">Login</Button>
         </Toolbar>

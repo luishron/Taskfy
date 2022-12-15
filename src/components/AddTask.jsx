@@ -9,7 +9,7 @@ import React, { useState } from "react";
 
 export const AddTask = ({ onAddTask }) => {
   const [text, setText] = useState("");
-
+  const date = Date.now();
   const handleTask = (e) => {
     const textTaskInput = e.target.value;
     textTaskInput.trim() ? setText(textTaskInput) : setText("");
@@ -34,11 +34,11 @@ export const AddTask = ({ onAddTask }) => {
           <CardContent>
             <TextField
               fullWidth
-              label="Create new task"
+              label="New task"
               multiline
               maxRows={4}
-              id="addtask"
-              placeholder="Add task"
+              id="new-task"
+              placeholder="Create a new task"
               value={text}
               onChange={handleTask}
             />
@@ -48,11 +48,11 @@ export const AddTask = ({ onAddTask }) => {
               variant="contained"
               onClick={() => {
                 setText("");
-                onAddTask(text);
+                onAddTask(text, date);
               }}
               type="submit"
             >
-              Add
+              New
             </Button>
           </CardActions>
         </form>

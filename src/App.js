@@ -10,16 +10,19 @@ const INITIAL_STATE = [
   {
     id: "f1d5cf5c-e1a8-4c5b-87a1-e3eaa6443162",
     text: "Visit Kafka Museum",
+    date: 1671067396438,
     done: true,
   },
   {
     id: "f1d5cf5c-e1a8-4c5b-87a1-e3eaa6443163",
     text: "Watch a puppet show",
+    date: 1671067396438,
     done: false,
   },
   {
     id: "f1d5cf5c-e1a8-4c5b-87a1-e3eaa6443164",
     text: "Lennon Wall pic",
+    date: 1671067396438,
     done: false,
   },
 ];
@@ -34,6 +37,7 @@ const taskReducer = (tasks, action) => {
         {
           id: action.id,
           text: action.text,
+          date: action.date,
           done: false,
         },
       ];
@@ -58,11 +62,12 @@ function App() {
   // useReduce
   const [tasks, dispatch] = useReducer(taskReducer, INITIAL_STATE);
 
-  function handleAddTask(text) {
+  function handleAddTask(text, date) {
     text.length > 0 &&
       dispatch({
         type: "added",
         id: taskId,
+        date: date,
         text: text,
       });
   }
