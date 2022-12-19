@@ -1,14 +1,14 @@
 import {
   AppBar,
   Box,
-  Button,
   IconButton,
+  Switch,
   Toolbar,
   Typography,
 } from "@mui/material";
 import React from "react";
 
-export const Navbar = () => {
+export const Navbar = ({ change, check }) => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -19,13 +19,16 @@ export const Navbar = () => {
             color="inherit"
             aria-label="menu"
             sx={{ mr: 2 }}
-          >
-            {/* <MenuIco /> */}
-          </IconButton>
+          ></IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Taskfy
           </Typography>
-          <Button color="inherit">Login</Button>
+          <Switch
+            color="default"
+            defaultChecked
+            onChange={change}
+            checked={check}
+          />
         </Toolbar>
       </AppBar>
     </Box>

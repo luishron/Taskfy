@@ -1,32 +1,31 @@
-import { Grid } from "@mui/material";
+import { Grid, ThemeProvider } from "@mui/material";
 import Box from "@mui/material/Box";
-import { useReducer } from "react";
+import { useReducer, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { AddTask, TaskList } from "./components/";
 import { Navbar } from "./components/Navbar";
+import { darkTheme, lightTheme } from "./themes";
 
-// Estado incial: Array de objetos
 const INITIAL_STATE = [
   {
     id: "f1d5cf5c-e1a8-4c5b-87a1-e3eaa6443162",
-    text: "Visit Kafka Museum",
-    date: 1671067396438,
+    text: "Learn about Solidity",
+    date: 1601067316438,
     done: true,
   },
   {
     id: "f1d5cf5c-e1a8-4c5b-87a1-e3eaa6443163",
-    text: "Watch a puppet show",
-    date: 1671067396438,
+    text: "Create small projects in solidity",
+    date: 1601067316438,
     done: false,
   },
   {
     id: "f1d5cf5c-e1a8-4c5b-87a1-e3eaa6443164",
-    text: "Lennon Wall pic",
-    date: 1671067396438,
+    text: "Find out more about Solidity",
+    date: 1601067316438,
     done: false,
   },
 ];
-// Reduce
 
 const taskReducer = (tasks, action) => {
   switch (action.type) {
@@ -59,7 +58,7 @@ const taskReducer = (tasks, action) => {
 function App() {
   let taskId = uuidv4();
 
-  // useReduce
+  const [dark, setDark] = useState(false);
   const [tasks, dispatch] = useReducer(taskReducer, INITIAL_STATE);
 
   function handleAddTask(text, date) {
@@ -87,8 +86,8 @@ function App() {
   }
 
   return (
-    <>
-      <Navbar />
+    <ThemeProvider theme={dark ? darkTheme : lightTheme}>
+      <Navbar check={dark} change={() => setDark(!dark)} />
       <Box
         sx={{
           bgcolor: (theme) =>
@@ -111,7 +110,7 @@ function App() {
           </Grid>
         </Grid>
       </Box>
-    </>
+    </ThemeProvider>
   );
 }
 
